@@ -67,23 +67,20 @@ LinuxBuild {
         DEFINES += DATADIR=\\\"$$DATADIR\\\" PKGDATADIR=\\\"$$PKGDATADIR\\\"
 
         #MAKE INSTALL - copy files
-        INSTALLS += target radioup datafiles desktopLink menuLink
+        INSTALLS += target radioup_bin radioup_firmware datafiles desktopLink menuLink
 
         target.path =$$BINDIR
 
-        radioup.path = $$BINDIR
-        radioup.files += $$BASEDIR/sik_uploader
+        radioup_bin.path = $$BINDIR
+        radioup_bin.files += $$BASEDIR/sik_uploader/sik_uploader.py
+
+	radioup_firmware.path = $$DATADIR/sik_uploader
+	radioup_firmware.files += $$BASEDIR/sik_uploader/firmware
 
         datafiles.path = $$DATADIR/APMPlanner2
         datafiles.files += $$BASEDIR/files
         datafiles.files += $$BASEDIR/data
         datafiles.files += $$BASEDIR/qml
-
-        #fix up file permissions. Bit of a hack job
-        #permFolders.path = $$DATADIR/APMPlanner2
-        #permFolders.commands += find $$DATADIR -type d -exec chmod 755 {} \\;
-        #permFiles.path = $$DATADIR/APMPlanner2
-        #permFiles.commands += find $$DATADIR -type f -exec chmod 644 {} \\;
 
         #create menu links
         desktopLink.path = $$DATADIR/menu
