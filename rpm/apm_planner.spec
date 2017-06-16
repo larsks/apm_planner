@@ -38,13 +38,12 @@ autopilots including ArduPilot and PX4/Pixhawk.
 sed -i '/FLITE_AUDIO_ENABLED/ d' apm_planner.pro
 
 %build
-mkdir -p $RPM_BUILD_ROOT/etc
-
 qmake-qt5 apm_planner.pro
 make %{?_smp_mflags} CFLAGS="%{optflags}"
 
 
 %install
+mkdir -p $RPM_BUILD_ROOT/etc
 env > $RPM_BUILD_ROOT/etc/buildenv-%{name}
 make install INSTALL_ROOT=$RPM_BUILD_ROOT/usr
 
