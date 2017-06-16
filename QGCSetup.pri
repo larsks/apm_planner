@@ -67,7 +67,7 @@ LinuxBuild {
         DEFINES += DATADIR=\\\"$$DATADIR\\\" PKGDATADIR=\\\"$$PKGDATADIR\\\"
 
         #MAKE INSTALL - copy files
-        INSTALLS += target radioup_bin radioup_firmware datafiles desktopLink menuLink
+        INSTALLS += target radioup_bin radioup_firmware datafiles
 
         target.path =$$BINDIR
 
@@ -81,12 +81,22 @@ LinuxBuild {
         datafiles.files += $$BASEDIR/files
         datafiles.files += $$BASEDIR/data
         datafiles.files += $$BASEDIR/qml
+}
 
-        #create menu links
-        desktopLink.path = $$DATADIR/menu
-        desktopLink.files += $$BASEDIR/debian/apmplanner2
-        menuLink.path = $$DATADIR/applications
-        menuLink.files += $$BASEDIR/debian/apmplanner2.desktop
+DebianBuild|ArchBuild {
+	INSTALLS += desktopLink menuLink
+
+        desktopLink.path = $$DATADIR/applications
+        desktopLink.files += $$BASEDIR/debian/apmplanner2.desktop
+        menuLink.path = $$DATADIR/menu
+        menuLink.files += $$BASEDIR/debian/apmplanner2
+}
+
+RPMBuild {
+	INSTALLS += desktopLink
+
+        desktopLink.path = $$DATADIR/applications
+        desktopLink.files += $$BASEDIR/rpm/apm_planner.desktop
 }
 
 MacBuild {

@@ -44,6 +44,7 @@ linux-g++-64 {
         message(Ubuntu Build)
         DEFINES += Q_UBUNTU
         DEFINES += FLITE_AUDIO_ENABLED
+	CONFIG += DebianBuild
     }
 
     contains( DISTRO, "Arch" ) {
@@ -52,11 +53,13 @@ linux-g++-64 {
         DEFINES += FLITE_AUDIO_ENABLED
         INCLUDEPATH += /usr/include/openssl-1.0
         LIBRARYPATH += /usr/lib/openssl-1.0
+	CONFIG += ArchBuild
     }
 
     contains( REDHAT_RELEASE, "Fedora" ) {
         message(Fedora Build)
         DEFINES += Q_FEDORA
+	CONFIG += RPMBuild
     }
 
 } else: linux-g++ {
@@ -71,6 +74,7 @@ linux-g++-64 {
         message(Ubuntu Build)
         DEFINES += Q_UBUNTU
         DEFINES += FLITE_AUDIO_ENABLED
+	CONFIG += DebianBuild
     }
 
     contains( DISTRO, "Arch" ) {
@@ -79,11 +83,13 @@ linux-g++-64 {
         DEFINES += FLITE_AUDIO_ENABLED
         INCLUDEPATH += /usr/include/openssl-1.0
         LIBRARYPATH += /usr/lib/openssl-1.0
+	CONFIG += ArchBuild
     }
 
     contains( REDHAT_RELEASE, "Fedora" ) {
         message(Fedora Build)
         DEFINES += Q_FEDORA
+	CONFIG += RPMBuild
     }
 } else : win32-msvc2012 | win32-msvc2013 {
     message(Windows build)
