@@ -38,7 +38,7 @@ linux-g++-64 {
     DEFINES += Q_LINUX_64
 
     DISTRO = $$system(lsb_release -i)
-    REDHAT_RELEASE = $$system(cat /etc/redhat_release)
+    REDHAT_RELEASE = $$system(cat /etc/redhat-release)
 
     contains( DISTRO, "Ubuntu" ) {
         message(Ubuntu Build)
@@ -65,7 +65,7 @@ linux-g++-64 {
     DEFINES += Q_LINUX_32
 
     DISTRO = $$system(lsb_release -i)
-    REDHAT_RELEASE = $$system(cat /etc/redhat_release)
+    REDHAT_RELEASE = $$system(cat /etc/redhat-release)
 
     contains( DISTRO, "Ubuntu" ) {
         message(Ubuntu Build)
@@ -85,7 +85,6 @@ linux-g++-64 {
         message(Fedora Build)
         DEFINES += Q_FEDORA
     }
-
 } else : win32-msvc2012 | win32-msvc2013 {
     message(Windows build)
     CONFIG += WindowsBuild
